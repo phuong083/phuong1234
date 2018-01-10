@@ -1,12 +1,12 @@
 <!-- Phan dau tien header -->
 <?php
-	//include 'connect_db.php';
+	include 'connect_db.php';
 	$page = 'login';
 	include 'header.php';
 ?>
 <!-- Phan noi dung body -->
 <div class="body">
-	<form action="index.php" method="GET">
+	<form action="" method="_POST">
 	<div class="login" align="center">
 		<table>
 			<tr>
@@ -32,17 +32,20 @@
 <?php
 	if(isset($_POST["login"]))
 	{
-		session_start();
 		$email = $_POST["email"];
 		$matkhau = $_POST["password"];
 		$sql = "SELECT email,matkhau FROM thanhvien WHERE email='$email' AND matkhau='$matkhau'";
-		mysqli_query($conn,$sql);
-		$count = mysqli_num_rows($rows);
-		if($count==1)
-		{	
-			session_register("logged");
-			$logged="true";
-		}
+		//$rows = mysqli_query($conn,$sql);
+		//$count = mysqli_num_rows($rows);
+		$_SESSION['logged']='true';
+	}
+	if(isset($_SESSION['logged']))
+	{
+		echo'Đã có giá trị';
+	}
+	else
+	{
+		echo 'Chưa có giá trị';
 	}
 ?>
 <!-- Phan cuoi cung footer -->

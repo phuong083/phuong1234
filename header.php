@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	session_start();	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,8 +48,14 @@
 		</ul>
 		<div class="menuright">
 			<ul>
-				<li><a href="login.php"  class="<?php if($page=='login'){echo 'active';}?>" style="<?php if($logged=="true"){echo'visibility:hidden';}?>">Đăng nhập</a></li>
-				<li><a href="register.php"  class="<?php if($page=='register'){echo 'active';}?>" style="<?php if($logged=='true'){echo'visibility:hidden';}?>">Đăng ký</a></li>
+				<li><a href="login.php"  class="<?php if($page=='login'){echo 'active';}?>" style="<?php if(isset($_SESSION['logged'])){echo'display: none';}?>">Đăng nhập</a></li>
+				<li><a href="register.php"  class="<?php if($page=='register'){echo 'active';}?>" style="<?php if(isset($_SESSION['logged'])){echo'display: none';}?>">Đăng ký</a></li>
+				<li><a href="profile.php" class="<?php if($page=='register'){echo 'active';}?>" style="<?php if(!isset($_SESSION['logged'])){echo'display: none';}?>">Thành viên</a>
+					<div class="dropdown-content">
+    				<a href="#">Thông tin cá nhân</a>
+    				<a href="logout.php">Đăng xuất</a>
+  				</div>
+				</li>
 			</ul>
 		</div>	
 	</div>
