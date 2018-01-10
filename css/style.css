@@ -219,6 +219,7 @@ a:hover{
 	border: 2px solid #4CAF50;
 
 }
+/* */
 input[type=submit]{
 	background-color: #4CAF50;
 	color:white;
@@ -293,4 +294,28 @@ input[type=submit]:hover{
 .edit_post{
 	float: right;
 	width: 25%;
+}
+/* Hop tu canh bao */
+.alert {
+    padding: 20px;
+    background-color: #2196F3;
+    color: white;
+    margin-top: 15px;
+}
+
+/* Nút tat hop thu canh bao */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
 }
