@@ -20,13 +20,13 @@
 			</li>
 			<li><a href="#">Thư mục</a>
 				<div class="dropdown-content">
-    				<a href="#">Thêm thư mục</a>
-    				<a href="#">Tất cả thư mục</a>
+    				<a href="add_folder.php">Thêm thư mục</a>
+    				<a href="all_folder.php">Tất cả thư mục</a>
   				</div>
 			</li>
   			<li><a href="#">Thành viên</a>
 				<div class="dropdown-content">
-    				<a href="#">Danh sách thành viên</a>
+    				<a href="list_member.php">Danh sách thành viên</a>
     				<a href="#">Quản lý cấp bậc</a>
   				</div>
   			</li>

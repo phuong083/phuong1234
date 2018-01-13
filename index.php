@@ -63,11 +63,11 @@
 				$noidung = $r["NOIDUNG"];
 				$anhdaidien = $r["ANHDAIDIEN"];
 				$mabaiviet = $r["MABAIVIET"];
-			echo "<h3><a href='".$mabaiviet."'>".$tieude."</a></h3>";
+			echo "<h3><a href='post.php?id=".$mabaiviet."'>".$tieude."</a></h3>";
 			/*Hinh anh dai dien cua bai viet */
-			echo "<img src='".$anhdaidien."'' alt='hinh1' width='218px' height='150px'>"
-			/*Noi dung ban dau cua bai viet 
-			<p>Làm sao để thêm JavaScript và CSS stylesheets vào WordPress một cách đúng nhất? Nhiều người tự lập trình cho website WordPress của mình thường mắc lỗi khi gõ thẳng câu lệnh của họ vào trong các plugin và các theme. Trong bài này, chúng tôi sẽ giới thiệu cho các bạn cách làm thế nào để thêm JavaScript và stylesheet đúng trong WordPress. Điều này sẽ đặc biệt hữu ích cho những người mới bắt đầu học về theme WordPress và phát triển plugin.</p>*/
+			echo "<img src='".$anhdaidien."'' alt='hinh1' width='218px' height='150px'>";
+			/*Noi dung ban dau cua bai viet */
+			echo "<p>".$noidung."</p>";
 			?>
 		</div>
 		<!-- Phan cac bai viet lien quan -->
@@ -79,8 +79,9 @@
 				$result = mysqli_query($conn,$sql);
 				while($r= mysqli_fetch_assoc($result))
 				{
-					$baivietlienquan = $r["TIEUDE"];
-					echo "<li><a href=''>".$baivietlienquan."</a></li>";
+					$tieude = $r["TIEUDE"];
+					$mabaiviet = $r["MABAIVIET"];
+					echo "<li><a href='post.php?id=".$mabaiviet."'>".$tieude."</a></li>";
 				}
 			?>
 			</ul>

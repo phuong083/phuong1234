@@ -3,6 +3,8 @@
 	include 'connect_db.php';
 	$page = 'new_post';
 	include 'admin_header.php';
+	$_GET= array( "id" => "5",
+               "des"=> "good");
 ?>
 <div class="body">
 	<form method="POST">
@@ -50,7 +52,9 @@
 			</ol>
 		</ol>
 		<h3>Ảnh đại diện</h3><hr>
-		<input type="file" name="avatar_post">
+		<?php
+			include 'upload.php';
+		?>
 	</div>
 	</form>
 	<?php
@@ -58,11 +62,11 @@
 		{
 			$tieude= $_POST["caption"];
 			$noidung= $_POST["content"];
-			$anhdaidien =$_POST["avatar_post"];
+			//$anhdaidien =$_POST["image"];
 			$timestamp = mktime(12);
 			$ngayviet = date("Y-m-d h:i:s");
 			$thumuc= $_POST["folder"];
-			$sql = "INSERT INTO baiviet(MABAIVIET,TIEUDE,NOIDUNG,ANHDAIDIEN,NGAYVIET,MATHANHVIEN,MATHUMUC) VALUES ('',$tieude,$noidung,'images/post/.$anhdaidien','$ngayviet','01',$thumuc)";
+			$sql = "INSERT INTO baiviet(MABAIVIET,TIEUDE,NOIDUNG,ANHDAIDIEN,NGAYVIET,MATHANHVIEN,MATHUMUC) VALUES ('',$tieude,$noidung,'images/post/1212','$ngayviet','01',$thumuc)";
 			$result = mysqli_query($conn,$sql);
 		}
 	?>	
