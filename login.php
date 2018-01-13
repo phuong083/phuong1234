@@ -6,7 +6,7 @@
 ?>
 <!-- Phan noi dung body -->
 <div class="body">
-	<form action="" method="_POST">
+	<form action="" method="POST">
 	<div class="login" align="center">
 		<table>
 			<tr>
@@ -21,7 +21,7 @@
 				<td><input type="password" name="password" style="background-image: url('images/password.png');background-repeat: no-repeat;background-position: 7px 6px;  padding-left: 40px;"></td>
 			</tr>
 			<tr>
-				<td><a href="/">Quên mật khẩu?</a>
+				<td><a href="/">Quên mật khẩu?</a></td>
 				<td><input type="submit" name="login" value="Đăng nhập"></td>
 			</tr>
 		</table>
@@ -31,21 +31,18 @@
 <div class="clearfix"></div>
 <?php
 	if(isset($_POST["login"]))
-	{
+	{	
 		$email = $_POST["email"];
 		$matkhau = $_POST["password"];
-		$sql = "SELECT email,matkhau FROM thanhvien WHERE email='$email' AND matkhau='$matkhau'";
-		//$rows = mysqli_query($conn,$sql);
-		//$count = mysqli_num_rows($rows);
-		$_SESSION['logged']='true';
-	}
-	if(isset($_SESSION['logged']))
-	{
-		echo'Đã có giá trị';
-	}
-	else
-	{
-		echo 'Chưa có giá trị';
+		$sql = "SELECT mathanhvien,email,matkhau FROM thanhvien WHERE email='$email' AND matkhau='$matkhau'";
+		$rows = mysqli_query($conn,$sql);
+		$count = mysqli_num_rows($rows);
+		if($count==1)
+		{
+			$r=mysqli_fetch_assoc($rows);
+			$_SESSION['logged']=$r=['mathanhvien'];
+			header("location:index.php");
+		}
 	}
 ?>
 <!-- Phan cuoi cung footer -->

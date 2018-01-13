@@ -8,3 +8,7 @@
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
   Chào mừng admin website Xóm IT
 </div>
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  Hello ad
+</div>
