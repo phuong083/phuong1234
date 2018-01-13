@@ -5,6 +5,7 @@
 	include 'admin_header.php';
 ?>
 <div class="body">
+	<form method="POST">
 	<div class="content_post">
 		<table>
 			<tr>
@@ -27,29 +28,42 @@
 	<div class="edit_post title">
 		<h3>Thư mục</h3><hr>
 		<ol>
-			<li><input type="checkbox" name="123">Lập trình</li>
+			<li><input type="radio" name="folder" value="1" checked>Lập trình</li>
 			<ol>
-				<li><input type="checkbox" name="123">Website</li>
-				<li><input type="checkbox" name="123">Application</li>
-				<li><input type="checkbox" name="123">Game</li>
+				<li><input type="radio" name="folder" value="2">Website</li>
+				<li><input type="radio" name="folder" value="3">Application</li>
+				<li><input type="radio" name="folder" value="4">Game</li>
 			</ol>
-			<li><input type="checkbox" name="123">Công cụ</li>
+			<li><input type="radio" name="folder" value="5">Công cụ</li>
 			<ol>
-				<li><input type="checkbox" name="123">Office</li>
-				<li><input type="checkbox" name="123">Chỉnh sửa hình ảnh</li>
-				<li><input type="checkbox" name="123">Xây dựng video</li>
-				<li><input type="checkbox" name="123">Khác</li>
+				<li><input type="radio" name="folder" value="6">Office</li>
+				<li><input type="radio" name="folder" value="7">Chỉnh sửa hình ảnh</li>
+				<li><input type="radio" name="folder" value="8">Xây dựng video</li>
+				<li><input type="radio" name="folder" value="9">Khác</li>
 			</ol>
-			<li><input type="checkbox" name="123">Mạng máy tính</li>
+			<li><input type="radio" name="folder" value="10">Mạng máy tính</li>
 			<ol>
-				<li><input type="checkbox" name="123">Quản trị mạng</li>
-				<li><input type="checkbox" name="123">Bảo mật thông tin</li>
-				<li><input type="checkbox" name="123">Truyền dữ liệu</li>
-				<li><input type="checkbox" name="123">Khác</li>
+				<li><input type="radio" name="folder" value="11">Quản trị mạng</li>
+				<li><input type="radio" name="folder" value="12">Bảo mật thông tin</li>
+				<li><input type="radio" name="folder" value="13">Truyền dữ liệu</li>
+				<li><input type="radio" name="folder" value="14">Khác</li>
 			</ol>
-
 		</ol>
 		<h3>Ảnh đại diện</h3><hr>
-		<input type="file" name="123">
+		<input type="file" name="avatar_post">
 	</div>
+	</form>
+	<?php
+		if(isset($_POST["upload_post"]))
+		{
+			$tieude= $_POST["caption"];
+			$noidung= $_POST["content"];
+			$anhdaidien =$_POST["avatar_post"];
+			$timestamp = mktime(12);
+			$ngayviet = date("Y-m-d h:i:s");
+			$thumuc= $_POST["folder"];
+			$sql = "INSERT INTO baiviet(MABAIVIET,TIEUDE,NOIDUNG,ANHDAIDIEN,NGAYVIET,MATHANHVIEN,MATHUMUC) VALUES ('',$tieude,$noidung,'images/post/.$anhdaidien','$ngayviet','01',$thumuc)";
+			$result = mysqli_query($conn,$sql);
+		}
+	?>	
 </div>

@@ -49,7 +49,7 @@
 		$hoten = $_POST['user_name'];
 		$sdt = $_POST['phone_number'];
 		$sql = "INSERT INTO thanhvien(MATHANHVIEN,EMAIL,MATKHAU,TENTHANHVIEN,DIACHI,SDT,MACAPBAC) VALUES('',$email,$matkhau,$hoten,'',$sdt,'03')";
-			mysqli_query($conn,$sql);
+		mysqli_query($conn,$sql);
 	}
 ?>
 <div class="clearfix"></div>

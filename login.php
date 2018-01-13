@@ -34,15 +34,21 @@
 	{	
 		$email = $_POST["email"];
 		$matkhau = $_POST["password"];
-		$sql = "SELECT mathanhvien,email,matkhau FROM thanhvien WHERE email='$email' AND matkhau='$matkhau'";
+		$sql = "SELECT macapbac,email,matkhau FROM thanhvien WHERE email='$email' AND matkhau='$matkhau'";
 		$rows = mysqli_query($conn,$sql);
 		$count = mysqli_num_rows($rows);
 		if($count==1)
 		{
 			$r=mysqli_fetch_assoc($rows);
-			$_SESSION['logged']=$r=['mathanhvien'];
+			$_SESSION['logged']=$r['macapbac'];
 			header("location:index.php");
 		}
+	}
+	$sql = "SELECT macapbac,email,matkhau FROM thanhvien";
+	$rows = mysqli_query($conn,$sql);
+	while($r=mysqli_fetch_assoc($rows))
+	{
+		echo $r['macapbac']."<br>";
 	}
 ?>
 <!-- Phan cuoi cung footer -->
