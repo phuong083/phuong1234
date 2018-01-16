@@ -7,7 +7,7 @@ a{
 	color:#4CB000;
 }
 a:hover{
-	color:#4CAF00;
+	color:red;
 }
 .active{
 	background-color: #98FB98;
@@ -257,6 +257,10 @@ input[type=submit]:hover{
 	border-top: 5px solid #4CAF50;
 	box-shadow: 2px 2px 10px #DCDCDC;
 }
+.involve_topic img{
+	float:left;
+	margin: 10px 10px 0px 10px;
+}
 /* Phan comment cua bai viet */
 
 /* Phan dang tai comment len bai viet */
@@ -265,6 +269,7 @@ input[type=submit]:hover{
 	height: 100px;
 	border-radius: 100%;
 	float:left;
+	margin-right: 10px;
 }
 .comment_topic textarea{
 	margin-left: 20px;
@@ -321,4 +326,8 @@ input[type=submit]:hover{
 /* When moving the mouse over the close button */
 .closebtn:hover {
     color: black;
+}
+
+.all_member td,.all_post td{
+	border: 1px solid black;
 }

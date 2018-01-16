@@ -1,38 +1,18 @@
 <?php
-   if(isset($_FILES['image'])){
-      $errors= array();
-      $file_name = $_FILES['image']['name'];
-      $file_size =$_FILES['image']['size'];
-      $file_tmp =$_FILES['image']['tmp_name'];
-      $file_type=$_FILES['image']['type'];
-      $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-      
-      $expensions= array("jpeg","jpg","png");
-      
-      if(in_array($file_ext,$expensions)=== false){
-         $errors[]="Không chấp nhận định dạng ảnh có đuôi này, mời bạn chọn JPEG hoặc PNG.";
-      }
-      
-      if($file_size > 2097152){
-         $errors[]='Kích cỡ file nên là 2 MB';
-      }
-      
-      if(empty($errors)==true){
-         move_uploaded_file($file_tmp,"images/".$file_name);
-         echo "Thành công!!!";
-      }
-      else{
-         print_r($errors);
-      }
-   }
+/*$cString = "Chào tất cả mọi người - Đây sẽ là một tiêu đề rất dài, rất dài đấy, dài lắm lắm lắm cơ"; // Temporary string   
+$iChar = "100"; // Max number of character(s) for cutting 
+$iOutput = "85"; // Max number of character(s) for the output 
+if(strlen($cString) > $iChar) 
+{ 
+   $cOutput = mb_substr($cString, 0, $iOutput, "UTF-8"); 
+   /*while(substr($cOutput, -1) != " ") 
+   { 
+      $cOutput = substr($cOutput, 0, strlen($cOutput)-1); 
+   } 
+   $cOutput = $cOutput." ...";
+} 
+echo $cOutput."...";*/
+$string = "demo: cho 1 vd... Mình có 1 tiêu đề mẫu tin trên 20 ký tự..., vậy mình muốn khi xuất dữ liệu từ mysql ra ngoài thì cái 'tiêu đề mẫu tin' đó ko dc hiển thị trên 10 ký tự mà chỉ dc đúng 10 thôi... demo 2: qwe qwe qwe qwe qwe qwe qwe qwe ==> qwe qwe qw ... ho 1 vd... Mình có 1 tiêu đề mẫu tin trên 20 ký tự..., vậy mình muốn khi xuất dữ liệu từ mysql ra ngoài thì cái 'tiêu đề mẫu tin' đó ko dc hiển thị trên 10 ký tự mà chỉ dc đúng 10 thôi... ...";
+$dem=strlen($string);
+echo $dem;
 ?>
-<html>
-   <body>
-      
-      <form action="" method="POST" enctype="multipart/form-data">
-         <input type="file" name="image">
-         <input type="submit">
-      </form>
-      
-   </body>
-</html>

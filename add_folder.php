@@ -1,11 +1,9 @@
-<!-- Phan dau tien header -->
 <?php
-	include 'connect_db.php';
 	$page = 'add_folder';
 	include 'admin_header.php';
 ?>
 <!-- Phan noi dung body -->
-<div class="body">
+<div class="body" style="<?php if($_SESSION['logged']!='01'){ echo'display:none';} ?>">
 	<div class="content_post">
 		<table>
 			<tr>
@@ -24,3 +22,4 @@
 			</tr>
 		</table>
 	</div>
+</div>

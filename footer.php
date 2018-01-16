@@ -1,4 +1,3 @@
-<!-- Phan duoi cung footer -->
 <div class="footer">
 	<div class="footerleft">
 		<a href="index.php"><img src="images/logo.png" alt="XomIT"></a>

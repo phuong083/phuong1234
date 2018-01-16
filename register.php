@@ -1,6 +1,4 @@
-<!-- Phan dau tien header -->
 <?php
-	include 'connect_db.php';
 	$page = 'register';
 	include 'header.php';
 ?>
@@ -50,6 +48,7 @@
 		$sdt = $_POST['phone_number'];
 		$sql = "INSERT INTO thanhvien(MATHANHVIEN,EMAIL,MATKHAU,TENTHANHVIEN,DIACHI,SDT,MACAPBAC) VALUES('',$email,$matkhau,$hoten,'',$sdt,'03')";
 		mysqli_query($conn,$sql);
+		header('location:finish_register.php');
 	}
 ?>
 <div class="clearfix"></div>

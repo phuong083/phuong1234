@@ -1,5 +1,6 @@
 <?php
-	session_start();	
+	session_start();
+	include 'connect_db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +16,8 @@
 <div class="header">
 	<!--Phan logo,banner-->
 	<div class="banner">
-		<a href="index.php"><img src="images/logo.png" alt="XomIT"></a>
-		<a href="index.php" style="margin-left: 50px;"><img src="images/banner.png" alt="XomIT"></a>
+		<a href="index.php"><img src="images/logo.png" alt="XomIT" width="272px" height="90px"></a>
+		<a href="index.php" style="margin-left: 50px;"><img src="images/banner.jpg" alt="XomIT"></a>
 	</div>
 	<!--Thanh menu-->
 	<div class="menu" id="navbar">

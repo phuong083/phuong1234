@@ -1,6 +1,6 @@
 <?php
 	// Ấn định  dung lượng file ảnh upload
-	define ("MAX_SIZE","100");
+	define ("MAX_SIZE","1000");
  
 	// hàm này đọc phần mở rộng của file. Nó được dùng để kiểm tra nếu
 	// file này có phải là file hình hay không .
@@ -19,7 +19,7 @@
 	//If the error occures the file will not be uploaded.
 	$errors=0;
 	//checks if the form has been submitted
-	if(isset($_POST['Submit']))
+	if(isset($_POST['upload_post'])/* && isset($_FILES['image']['name'])*/)
 	{
 		// lấy tên file upload
 		$image=$_FILES['image']['name'];
@@ -35,7 +35,7 @@
 			if (($extension != "jpg") && ($extension != "jpeg") && ($extension !="png") && ($extension != "gif"))
 			{
 				// xuất lỗi ra màn hình
-				echo '<h1>Đây không phải là file hình!</h1>';
+				echo 'Đây không phải là file hình!';
 				$errors=1;
 			}
 			else
@@ -44,38 +44,25 @@
 				$size=filesize($_FILES['image']['tmp_name']);
 				if ($size > MAX_SIZE*1024)
 				{
-					echo '<h1>Vượt quá dung lượng cho phép!</h1>';
+					echo 'Vượt quá dung lượng cho phép!';
 					$errors=1;
 				}
- 
 				// đặt tên mới cho file hình up lên
-				$image_name=time().'.'.$extension;
+				//$image_name=time().'.'.$extension;
 				// gán thêm cho file này đường dẫn
-				$newname="images/".$image_name;
+				$newname="images/".$filename;
 				// kiểm tra xem file hình này đã upload lên trước đó chưa
 				$copied = copy($_FILES['image']['tmp_name'], $newname);
 				if (!$copied)
 				{
-					echo '<h1> File hình này đã tồn tại </h1>';
+					echo 'File hình này đã tồn tại!';
 					$errors=1;
 				}
 			}
 		}
 	}
-if(isset($_POST['Submit']) && !$errors)
-{
-echo "<h1>File hình đã được Upload thành công </h1>";
-}
+	if(isset($_POST['upload_post']) && !$errors)
+	{
+	echo "File hình đã được Upload thành công!";
+	}
 ?>
- 
-<!-- nhớ đặt enctype to "multipart/frm-data"và sử dụng  input type "file" -->
-<form name="newad" method="post" enctype="multipart/form-data" action="">
-<table>
-	<tr>
-		<td><input type="file" name="image"></td>
-	</tr>
-	<tr>
-		<td><input name="Submit" type="submit" value="Upload image"></td>
-	</tr>
-</table>
-</form>

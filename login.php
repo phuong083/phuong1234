@@ -1,11 +1,34 @@
-<!-- Phan dau tien header -->
 <?php
-	include 'connect_db.php';
 	$page = 'login';
 	include 'header.php';
 ?>
 <!-- Phan noi dung body -->
 <div class="body">
+	<?php
+	if(isset($_POST["login"]))
+	{	
+		$email = $_POST["email"];
+		$matkhau = $_POST["password"];
+		$sql = "SELECT mathanhvien,macapbac,email,matkhau,tenthanhvien FROM thanhvien WHERE email='$email' AND matkhau='$matkhau'";
+		$rows = mysqli_query($conn,$sql);
+		$count = mysqli_num_rows($rows);
+		if($count==1)
+		{
+			$r=mysqli_fetch_assoc($rows);
+			$_SESSION['logged']=$r['macapbac'];
+			$_SESSION['iduser']=$r['mathanhvien'];
+			header("location:index.php");
+		}
+		else
+		{
+			echo "<div class='alert'>";
+  			echo "<span class='closebtn' onclick='this.parentElement.style.display='none';'>&times;</span>"; 
+  			echo "Sai thông tin đăng nhập";
+  			echo "</div>";
+  			echo "<br>";
+  		}
+	}
+	?>
 	<form action="" method="POST">
 	<div class="login" align="center">
 		<table>
@@ -29,28 +52,6 @@
 	</form>
 </div>
 <div class="clearfix"></div>
-<?php
-	if(isset($_POST["login"]))
-	{	
-		$email = $_POST["email"];
-		$matkhau = $_POST["password"];
-		$sql = "SELECT macapbac,email,matkhau FROM thanhvien WHERE email='$email' AND matkhau='$matkhau'";
-		$rows = mysqli_query($conn,$sql);
-		$count = mysqli_num_rows($rows);
-		if($count==1)
-		{
-			$r=mysqli_fetch_assoc($rows);
-			$_SESSION['logged']=$r['macapbac'];
-			header("location:index.php");
-		}
-	}
-	$sql = "SELECT macapbac,email,matkhau FROM thanhvien";
-	$rows = mysqli_query($conn,$sql);
-	while($r=mysqli_fetch_assoc($rows))
-	{
-		echo $r['macapbac']."<br>";
-	}
-?>
 <!-- Phan cuoi cung footer -->
 <?php
 	include 'footer.php';

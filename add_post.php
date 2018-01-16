@@ -1,13 +1,9 @@
-<!-- Phan dau tien header -->
 <?php
-	include 'connect_db.php';
-	$page = 'new_post';
+	$page = 'post';
 	include 'admin_header.php';
-	$_GET= array( "id" => "5",
-               "des"=> "good");
 ?>
-<div class="body">
-	<form method="POST">
+<div class="body" style="<?php if($_SESSION['logged']!='01'){ echo'display:none';} ?>">
+	<form method="POST" enctype="multipart/form-data">
 	<div class="content_post">
 		<table>
 			<tr>
@@ -48,13 +44,14 @@
 				<li><input type="radio" name="folder" value="11">Quản trị mạng</li>
 				<li><input type="radio" name="folder" value="12">Bảo mật thông tin</li>
 				<li><input type="radio" name="folder" value="13">Truyền dữ liệu</li>
-				<li><input type="radio" name="folder" value="14">Khác</li>
 			</ol>
+			<li><input type="radio" name="folder" value="14">Mẹo vặt</li>
 		</ol>
 		<h3>Ảnh đại diện</h3><hr>
 		<?php
 			include 'upload.php';
 		?>
+		<input type="file" name="image">
 	</div>
 	</form>
 	<?php
@@ -62,12 +59,11 @@
 		{
 			$tieude= $_POST["caption"];
 			$noidung= $_POST["content"];
-			//$anhdaidien =$_POST["image"];
-			$timestamp = mktime(12);
+			$anhdaidien =$_FILES['image']['name'];
 			$ngayviet = date("Y-m-d h:i:s");
 			$thumuc= $_POST["folder"];
-			$sql = "INSERT INTO baiviet(MABAIVIET,TIEUDE,NOIDUNG,ANHDAIDIEN,NGAYVIET,MATHANHVIEN,MATHUMUC) VALUES ('',$tieude,$noidung,'images/post/1212','$ngayviet','01',$thumuc)";
-			$result = mysqli_query($conn,$sql);
+			$sql = "INSERT INTO baiviet(MABAIVIET,TIEUDE,NOIDUNG,ANHDAIDIEN,NGAYVIET,MATHANHVIEN,MATHUMUC) VALUES ('','$tieude','$noidung','images/$anhdaidien','$ngayviet','01',$thumuc)";
+			mysqli_query($conn,$sql);
 		}
 	?>	
 </div>
