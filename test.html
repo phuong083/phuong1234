@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	body {
+    font-family:arial;
+        width:500px; margin:10px auto;    
+}
+
+.zitem {
+    width:125px;
+    height:125px;    
+    border:4px solid #222;    
+    margin:5px 5px 5px 0;
+    overflow:hidden;
+    position:relative;
+    float:left;
+}
+
+.zitem .caption {
+    width:125px;
+    height:30px;
+    background:#000;
+    color:#fff;
+    font-weight:bold;
+        
+    position:absolute;
+    bottom:-1px; /* fix IE */
+    left:0;
+
+    /* Mặc định thì nó sẽ được ẩn đi*/
+    display:none;
+
+    /* thiết lập opacity  */
+    filter:alpha(opacity=70);    /* cho ie  */
+    -moz-opacity:0;    /* cho trình duyệt mozilla cũ giống netscape  */
+    -khtml-opacity: 0;    /* cho trình duyệt safari cũ*/  
+    opacity: 0;    /* css chuẩn, hiện tại nó làm việc hầu hết ở các trình duyệt hiện đại như firefox,  */
+
+}
+
+.zitem .caption a {
+    text-decoration:none;
+    color:#fff;
+    font-size:12px;    
+    padding:5px;
+    display:block;
+}
+
+img {
+    border:0;
+    
+    /* cho phép javascript di chuyển img position*/
+    position:absolute;
+}
+</style>
+</head>
+<body>
+	<div class="zitem"><a href="#"><img src="images/hinh1.png" alt="cHickcHick" title="" width="125" height="125"></a><div class="caption"><a href="">cHickcHick</a></div></div><div class="zitem"><a href="#"><img src="images/hinh1.png" alt="Payit Forward" title="" width="125" height="125"></a><div class="caption"><a href="">Payit Forward</a></div></div>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+    var move = -15;  //Di chuyển image (pixel)
+    
+    var zoom = 1.2;  //Phần trăm zoom, 1.2 =120%
+
+    // Khi hover vào các thumbnail
+    $('.zitem').hover(function() {
+        
+        // Thiết lập width và height theo phần trăm zoom
+        width = $('.zitem').width() * zoom;
+        height = $('.zitem').height() * zoom;
+        
+        //DI chuyển và zoom image
+        $(this).find('img').stop(false,true).animate({'width':width, 'height':height, 'top':move, 'left':move}, {duration:200});
+        
+        //Hiện tiêu đề(caption)
+        $(this).find('div.caption').stop(false,true).fadeIn(200);
+    },
+    function() {
+        //Reset image
+        $(this).find('img').stop(false,true).animate({'width':$('.zitem').width(), 'height':$('.zitem').height(), 'top':'0', 'left':'0'}, {duration:100});    
+
+        //Ẩn tiêu đề
+        $(this).find('div.caption').stop(false,true).fadeOut(200);
+    });
+
+});
+
+</script>
+</body>
+</html>
